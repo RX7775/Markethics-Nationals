@@ -1,5 +1,5 @@
 # Markethics
-This is the FBLA project repository of Jonathan He, Andrew Xie, and Richard Xu. 
+This is the FBLA project repository of Jonathan He, Andrew Xie, and Richard Xu. We competed in the Computer Game & Simulation Programming event, and we created a stock market game using the Java programming language and BlueJ IDE. The goal of the game is to help players become more acquainted with the trends of the stock market and how business decisions can affect a company's value.
 
 Source code is provided. 
 
