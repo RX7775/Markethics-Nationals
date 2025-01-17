@@ -15,7 +15,7 @@ Otherwise:
 4. Right click the box named TitlePage -> Compile
 5. Right click TitlePage -> void main(String[] args)
 6. The game should now be running
-7. If you close the game, follow step 5 to run the game again
+7. If you close the game, follow Step 5 to run the game again
 
 # Materials Used
 We leveraged various elements (e.g. timer, panels) of the Java Swing library in order to build the graphical user interface (GUI) of our game.
