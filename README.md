@@ -20,4 +20,4 @@ Otherwise:
 # Materials Used
 We leveraged various elements (e.g. timer, panels) of the Java Swing library in order to build the graphical user interface (GUI) of our game.
 
-We also utilized open-source fonts provided by Google Fonts (Permanent Marker, Caveat) in order to display our text.
+We also utilized open-source fonts provided by Google Fonts (Permanent Marker, Caveat) in order to display our game.
