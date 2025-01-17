@@ -5,6 +5,10 @@ Source code is provided.
 
 # Installation and How to Run 
 As of now, the project runs best on Windows (Windows 8 or later). Those using Mac may encounter issues with loading screens and images. 
+
+If you are familiar with running jar files, you can skip to step 2 and run it to start the game directly.
+
+Otherwise:
 1. Download the [BlueJ](https://www.bluej.org/) Java environment app
 2. Download jar file to a place you can find
 3. In BlueJ, go to the top left and click Project -> Open ZIP/JAR... and select the jar file you just downloaded
