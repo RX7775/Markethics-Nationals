@@ -4,7 +4,7 @@ This is the FBLA project repository of Jonathan He, Andrew Xie, and Richard Xu.
 Source code is provided. 
 
 # Installation and How to Run 
-As of now, the project runs best on Windows (Windows 8 or later). Those using Mac may encounter issues with loading screens and images. 
+As of now, the project runs best on Windows (Windows 8 or later). Those using MacOS may encounter issues with loading screens and images. 
 
 If you are familiar with running jar files, you can skip to step 2 and run it to start the game directly.
 
