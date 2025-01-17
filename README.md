@@ -10,4 +10,4 @@ As of now, the project runs best on Windows (Windows 8 or later). Those using Ma
 4. Right click the box named TitlePage -> Compile
 5. Right click TitlePage -> void main(String[] args)
 6. The game should now be running
-7. If you close the game, follow steps 4 & 5 to run the game again 
+7. If you close the game, follow step 5 to run the game again 
