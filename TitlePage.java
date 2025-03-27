@@ -50,6 +50,13 @@ public class TitlePage {
         });
         buttonPanel.add(playButton);
         
+        // Settings button
+        JButton settingsButton = new JButton("Settings");
+        settingsButton.setFont(new Font("Marker Felt", Font.PLAIN, 24));
+        settingsButton.addActionListener(e -> new SettingsScreen());
+        buttonPanel.add(settingsButton);
+        
+        
         // Instructions button
         JButton instructionsButton = new JButton("How to Play");
         instructionsButton.setFont(new Font("Marker Felt", Font.PLAIN, 24));
