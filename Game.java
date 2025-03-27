@@ -438,9 +438,14 @@ public class Game {
 
             // Draw stock price graph
             if (stockPrice - previousStockPrice > 0) {
+                g.setColor(Color.GREEN);
                 g.drawString("Stock Price: $" + String.format("%.2f (+%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 50);
             }
-            else g.drawString("Stock Price: $" + String.format("%.2f (%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 50);
+            else {
+                g.setColor(Color.RED);
+                g.drawString("Stock Price: $" + String.format("%.2f (%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 50);
+            }
+            g.setColor(Color.BLACK);
             if (day % 30 == 0) previousStockPrice = stockPrice;
             g.drawString("Day: " + day, 50, 80);
             g.drawString("Ethical Points: " + ethicalPoints, 50, 110); 
