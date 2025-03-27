@@ -13,11 +13,19 @@ public class Option
 
     // Chosen decision 
     private int index;
+    
+    public double[] multiplier = {0.7, 1, 1.3}; 
 
     public Option()
     {
         // default 
         index = 0; 
+        for (int i = 0; i < 30; i++) {
+            if (ethicalPoints[i]<0) ethicalPoints[i]*=multiplier[GameSettings.getDifficulty()-1];
+            else ethicalPoints[i]*=multiplier[3-GameSettings.getDifficulty()]; 
+            if (efficiencyPoints[i]<0) efficiencyPoints[i]*=multiplier[GameSettings.getDifficulty()-1]; 
+            else efficiencyPoints[i]*=multiplier[3-GameSettings.getDifficulty()]; 
+        }
     }
     
     public void reroll() {
