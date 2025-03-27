@@ -292,7 +292,7 @@ public class Game {
         day++;
 
         // Ends game
-        if (day == GameSettings.getNumDays()) {
+        if (day == GameSettings.getNumDays() * 30) {
             endGame(); 
             return; 
         }
