@@ -35,7 +35,11 @@ public class Game {
     private int stickyXGlobal = 800, stickyYGlobal = 350;
     private int barXBegin = 200, barXEnd = 600;
     private boolean first = true;
-
+    private String recentOption = ""; 
+    private boolean recentChoice = false;
+    private int recentBE = 0;
+    private int recentEP = 0;
+    
     public Game() {
         stockPrice = 100.0;  // Starting stock price
         previousStockPrice = 100.0;
@@ -210,34 +214,45 @@ public class Game {
             handleEnd(option);
             return; 
         }
+        recentEP = currentEvent.ethicalChange();
+        recentBE = currentEvent.efficiencyChange(); 
         if (option == 1) {
             // Yes
             ethicalPoints += currentEvent.ethicalChange();
             businessEfficiency += currentEvent.efficiencyChange();
             first = true;
             yesCount++;
+            recentChoice = true;
         } else if (option == 2) {
             // No
             ethicalPoints -= currentEvent.ethicalChange();
             businessEfficiency -= currentEvent.efficiencyChange();
             first = true;
             noCount++;
+            recentChoice = false;
+            recentEP*=-1;
+            recentBE*=-1;
         } else if (option == 3) {
             // Confirm
             if (stickyXGlobal + 125 <= (barXBegin + barXEnd) / 2) {
                 yesCount++;
                 ethicalPoints += currentEvent.ethicalChange();
                 businessEfficiency += currentEvent.efficiencyChange();
+                recentChoice = true;
             }
             else {
                 noCount++;
                 ethicalPoints -= currentEvent.ethicalChange();
                 businessEfficiency -= currentEvent.efficiencyChange();
+                recentChoice = false;
+                recentEP*=-1;
+                recentBE*=-1;
             }
             System.out.println(yesCount);
             System.out.println(noCount);
             first = true;
         }
+        recentOption = currentEvent.toString()+", "+recentBE+" BE, "+recentEP+" EP";
 
         // Update and continue necessary items
         updateStockPrice();
@@ -451,6 +466,14 @@ public class Game {
             g.drawString("Day: " + day, 50, 80);
             g.drawString("Ethical Points: " + ethicalPoints, 50, 110); 
             g.drawString("Business Efficiency: " + businessEfficiency, 50, 140); 
+            if (recentChoice) g.setColor(Color.GREEN);
+            else g.setColor(Color.RED);
+            pm = newFont("PermanentMarker-Regular", 12f);
+            g.setFont(pm);
+            g.drawString("Last Choice: "+recentOption, 50, 170);
+            g.setColor(Color.BLACK); 
+            pm = newFont("PermanentMarker-Regular", 20f);
+            g.setFont(pm);
             g.drawString("Highest Recorded Price: $" + String.format("%.2f", highScore), 400, 50);
             Graphics2D g2 = (Graphics2D) g;
             g2.setStroke(new BasicStroke(10));
