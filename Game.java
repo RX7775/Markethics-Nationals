@@ -291,7 +291,7 @@ public class Game {
         day++;
 
         // Ends game
-        if (day == 930) {
+        if (day == GameSettings.getNumDays()) {
             endGame(); 
             return; 
         }
@@ -421,8 +421,8 @@ public class Game {
             
             // Display game end information
             if (gameEnded) {
-                g.drawString("Game has ended", 200, 100); 
-                if (day == 930) {
+                g.drawString("The game has ended!", 200, 100); 
+                if (day == GameSettings.getNumDays()) {
                     g.drawString("Congratulations on staying in business until the end!",200,200);
                     if (stockPrice > 100) g.drawString("You ended with a stock price of $"+String.format("%.2f",stockPrice)+", making a profit and winning!",200,250);
                     else g.drawString("You ended with a stock price of $"+String.format("%.2f",stockPrice)+", try to make a profit next time!",200,250); 
