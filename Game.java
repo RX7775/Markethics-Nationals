@@ -104,7 +104,7 @@ public class Game {
         // Ends the game, with play again or quit options
         gameEnded = true; 
         option1 = "PLAY AGAIN"; 
-        option2 = "QUIT"; 
+        option2 = "RETURN TO TITLEPAGE"; 
         updateOptions(); 
         buttonPanel.setVisible(true); 
         gameTimer.start(); 
@@ -281,7 +281,8 @@ public class Game {
             gameTimer.start(); 
         }
         if (option == 2) {
-            System.exit(0); 
+            new TitlePage(); 
+            gameFrame.dispose();
         }
     }
 
