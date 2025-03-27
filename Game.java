@@ -308,7 +308,7 @@ public class Game {
         }
         else if (day % 30 == 15) {
             // Ethic checks
-            if (rand.nextDouble() * 40 < -ethicalPoints) {
+            if (rand.nextDouble() * 40 < -ethicalPoints*GameSettings.getDifficulty()) {
                 // Start investigation
                 beingInvestigated = true; 
                 gameTimer.stop(); 
