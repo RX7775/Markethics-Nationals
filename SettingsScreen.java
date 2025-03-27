@@ -27,17 +27,23 @@ public class SettingsScreen extends JFrame {
                 GameSettings.setNumDays(days);
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Please enter a valid number for months.");
+                return;
             }
-
+        
             try {
                 int dif = Integer.parseInt(difField.getText());
+                if (dif < 1 || dif > 3) {  // Restrict input to 1, 2, or 3
+                    throw new NumberFormatException();
+                }
                 GameSettings.setDifficulty(dif);
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Please enter a valid number for difficulty.");
+                JOptionPane.showMessageDialog(this, "Please enter 1 (easy), 2 (medium), or 3 (hard).");
+                return;
             }
-
+        
             dispose(); // Close settings screen after handling input
         });
+
 
         add(label);
         add(daysField);
