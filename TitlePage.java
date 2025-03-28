@@ -139,7 +139,7 @@ public class TitlePage {
         public GamePanel() {
             try {
                 // Image links 
-                URL instructionsUrl = new URL("https://i.imgur.com/uQI3S3M.png");
+                URL instructionsUrl = new URL("https://imgur.com/a/POxZmRM");
                 instructionsImage = new ImageIcon(instructionsUrl).getImage();
                 
                 URL otherImageUrl = new URL("https://i.imgur.com/bBsxoVs.png");
