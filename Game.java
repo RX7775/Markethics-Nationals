@@ -454,7 +454,7 @@ public class Game {
 
             // Draw stock price graph
             if (stockPrice - previousStockPrice > 0) {
-                g.setColor(Color.GREEN);
+                g.setColor(new Color(0,204,0));
                 g.drawString("Stock Price: $" + String.format("%.2f (+%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 50);
             }
             else {
@@ -466,7 +466,7 @@ public class Game {
             g.drawString("Day: " + day, 50, 80);
             g.drawString("Ethical Points: " + ethicalPoints, 50, 110); 
             g.drawString("Business Efficiency: " + businessEfficiency, 50, 140); 
-            if (recentChoice) g.setColor(Color.GREEN);
+            if (recentChoice) g.setColor(new Color(0,204,0));
             else g.setColor(Color.RED);
             pm = newFont("PermanentMarker-Regular", 12f);
             g.setFont(pm);
@@ -502,7 +502,7 @@ public class Game {
                     count = 0;
                 }
             }
-            g.setColor(Color.GREEN);
+            g.setColor(new Color(0,204,0));
             g.drawString("YES", 275, 280);
             g.setColor(Color.RED);
             g.drawString("NO", 475, 280);
