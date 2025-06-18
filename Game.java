@@ -340,22 +340,23 @@ public class Game {
     }
 
     private void updateStockPrice() {
-        // Update the stock price
-        double changePercent = (rand.nextDouble() * (10 + businessEfficiency/10.0)) - 5;  // Generate a random number between -5 and +5
-        double changeAmount = stockPrice * (changePercent / 100);
-        stockPrice += changeAmount;
-        
-        // Ensure stock price doesn't go negative
+        // Updates stock price using geometric brownian motion (GBM) w/ biased drift
+        double mu = 0.05 * businessEfficiency; 
+        double sigma = 0.2;                      
+        double dt = 1.0 / 252;                   
+        double Z = rand.nextGaussian();          
+    
+        stockPrice *= Math.exp((mu - 0.5 * sigma * sigma) * dt + sigma * Math.sqrt(dt) * Z);
+    
+        // Avoid negative prices
         if (stockPrice < 0) stockPrice = 0;
-
-        // Add new stock price to the history
+    
         stockPriceHistory.add(stockPrice);
-
-        // Limit history to the last 100 days
         if (stockPriceHistory.size() > 100) {
-            stockPriceHistory.remove(0);  // Remove oldest data (day 1)
+            stockPriceHistory.remove(0);
         }
-        highScore = Math.max(highScore, stockPrice); 
+    
+        highScore = Math.max(highScore, stockPrice);
     }
 
     // GamePanel class for custom drawing
@@ -454,7 +455,7 @@ public class Game {
 
             // Draw stock price graph
             if (stockPrice - previousStockPrice > 0) {
-                g.setColor(new Color(0,204,0));
+                g.setColor(Color.GREEN);
                 g.drawString("Stock Price: $" + String.format("%.2f (+%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 50);
             }
             else {
@@ -466,7 +467,7 @@ public class Game {
             g.drawString("Day: " + day, 50, 80);
             g.drawString("Ethical Points: " + ethicalPoints, 50, 110); 
             g.drawString("Business Efficiency: " + businessEfficiency, 50, 140); 
-            if (recentChoice) g.setColor(new Color(0,204,0));
+            if (recentChoice) g.setColor(Color.GREEN);
             else g.setColor(Color.RED);
             pm = newFont("PermanentMarker-Regular", 12f);
             g.setFont(pm);
@@ -502,7 +503,7 @@ public class Game {
                     count = 0;
                 }
             }
-            g.setColor(new Color(0,204,0));
+            g.setColor(Color.GREEN);
             g.drawString("YES", 275, 280);
             g.setColor(Color.RED);
             g.drawString("NO", 475, 280);
