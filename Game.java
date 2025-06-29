@@ -25,6 +25,7 @@ public class Game {
     private boolean beingInvestigated;
     private boolean waitingForInvestigation;
     private boolean gameEnded;
+    private boolean updatedPreviousPrice = false;
     private ArrayList<Double> stockPriceHistory;  // List to store stock prices for line graph
     private int businessEfficiency;
     private int ethicalPoints;
@@ -39,6 +40,7 @@ public class Game {
     private boolean recentChoice = false;
     private int recentBE = 0;
     private int recentEP = 0;
+    private double tempStock = 0;
     
     public Game() {
         stockPrice = 100.0;  // Starting stock price
@@ -166,7 +168,7 @@ public class Game {
         gameTimer = new Timer(100, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!waitingForInput && !beingInvestigated && !waitingForInvestigation&!gameEnded) {
+                if (!waitingForInput && !beingInvestigated && !waitingForInvestigation && !gameEnded) {
                     updateGame();  // Continue to simulate game
                 }
                 gamePanel.repaint();  // Repaint the panel to update game interface
@@ -256,9 +258,11 @@ public class Game {
 
         // Update and continue necessary items
         updateStockPrice();
+        previousStockPrice = tempStock;
         day++;
         waitingForInput = false;
         gameTimer.start();
+        
     }
     
     private void handleInvestigation(int option) {
@@ -302,18 +306,22 @@ public class Game {
     }
 
     private void updateGame() {
+        /* if (day % 30 != 0) {
+            updatedPreviousPrice = false;
+        } */
         // Automatically updates game every day
         updateStockPrice();  
         day++;
 
         // Ends game
         if (day == GameSettings.getNumDays() * 30) {
-            endGame(); 
+            endGame();
             return; 
         }
         // Pause game to wait for user input
         if (day % 30 == 0) {
-            gameTimer.stop();  
+            gameTimer.stop();
+            tempStock = stockPrice;
             waitingForInput = true;
             option1 = "YES";
             option2 = "NO";
@@ -347,6 +355,11 @@ public class Game {
         double Z = rand.nextGaussian();          
     
         stockPrice *= Math.exp((mu - 0.5 * sigma * sigma) * dt + sigma * Math.sqrt(dt) * Z);
+        // Update the stock price
+        /*
+        double changePercent = (rand.nextDouble() * (10 + businessEfficiency/10.0)) - 5;  // Generate a random number between -5 and +5
+        double changeAmount = stockPrice * (changePercent / 100);
+        stockPrice += changeAmount;*/
     
         // Avoid negative prices
         if (stockPrice < 0) stockPrice = 0;
@@ -463,7 +476,11 @@ public class Game {
                 g.drawString("Stock Price: $" + String.format("%.2f (%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 50);
             }
             g.setColor(Color.BLACK);
-            if (day % 30 == 0) previousStockPrice = stockPrice;
+            // if (day % 30 == 0) previousStockPrice = stockPrice;
+            /* if (day % 30 == 0 && !updatedPreviousPrice) {
+                previousStockPrice = stockPrice;
+                updatedPreviousPrice = true;
+            } */
             g.drawString("Day: " + day, 50, 80);
             g.drawString("Ethical Points: " + ethicalPoints, 50, 110); 
             g.drawString("Business Efficiency: " + businessEfficiency, 50, 140); 
