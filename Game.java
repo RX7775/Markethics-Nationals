@@ -452,12 +452,15 @@ public class Game {
             // Display game end information
             if (gameEnded) {
                 g.drawString("The game has ended!", 200, 100); 
-                if (day == GameSettings.getNumDays()) {
+                if (day == GameSettings.getNumDays() * 30) {
                     g.drawString("Congratulations on staying in business until the end!",200,200);
                     if (stockPrice > 100) g.drawString("You ended with a stock price of $"+String.format("%.2f",stockPrice)+", making a profit and winning!",200,250);
                     else g.drawString("You ended with a stock price of $"+String.format("%.2f",stockPrice)+", try to make a profit next time!",200,250); 
                 }
-                else g.drawString("You lost everything... better luck next time!",200,200); 
+                else {
+                    g.drawString("You lost everything... better luck next time!",200,200); 
+                    // System.out.println("Num days: " + GameSettings.getNumDays());
+                }
                 g.drawString("Your stock peaked at a price of $"+String.format("%.2f",highScore),200,300); 
                 if (day == 930) {
                     g.drawString("Final Business Efficiency: " + businessEfficiency,200,400); 
