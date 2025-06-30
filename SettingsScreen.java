@@ -15,7 +15,7 @@ public class SettingsScreen extends JFrame {
         daysField = new JTextField(10);
         daysField.setText(String.valueOf(GameSettings.getNumDays())); // Pre-fill with current value
         
-        JLabel label2 = new JLabel("Enter difficulty (1=easy, 2=medium, 3=hard)");
+        JLabel label2 = new JLabel("Enter Difficulty (1=Easy, 2=Medium, 3=Hard)");
         difField = new JTextField(10);
         difField.setText(String.valueOf(GameSettings.getDifficulty()));
 
@@ -37,7 +37,7 @@ public class SettingsScreen extends JFrame {
                 }
                 GameSettings.setDifficulty(dif);
             } catch (NumberFormatException ex) {
-                JOptionPane.showMessageDialog(this, "Please enter 1 (easy), 2 (medium), or 3 (hard).");
+                JOptionPane.showMessageDialog(this, "Please enter 1 (Easy), 2 (Medium), or 3 (Hard).");
                 return;
             }
         
