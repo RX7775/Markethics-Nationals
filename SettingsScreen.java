@@ -11,7 +11,7 @@ public class SettingsScreen extends JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(0, 1)); // Use GridLayout to stack components vertically
 
-        JLabel label = new JLabel("Enter Number of Months:");
+        JLabel label = new JLabel("Enter Number of Months (Default is 30):");
         daysField = new JTextField(10);
         daysField.setText(String.valueOf(GameSettings.getNumDays())); // Pre-fill with current value
         
