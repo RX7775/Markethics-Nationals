@@ -93,6 +93,8 @@ public class Game {
         day = 1;           
         option1 = "YES";
         option2 = "NO";
+        yesCount = 0;
+        noCount = 0;
         currentEvent = new Option();
         currentEvent.randomize(); 
         currentConflict = new Conflict(); 
@@ -110,7 +112,7 @@ public class Game {
         // Ends the game, with play again or quit options
         gameEnded = true; 
         option1 = "PLAY AGAIN"; 
-        option2 = "RETURN TO TITLEPAGE"; 
+        option2 = "RETURN TO TITLE PAGE"; 
         updateOptions(); 
         buttonPanel.setVisible(true); 
         gameTimer.start(); 
