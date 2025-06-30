@@ -1,5 +1,5 @@
 # Markethics
-This is the FBLA project repository of Richard Xu, Andrew Xie, and Jonathan He. We competed in the Computer Game & Simulation Programming event, and we created a stock market game using the Java programming language and BlueJ IDE. The goal of the game is to help players become more acquainted with the trends of the stock market and how business decisions can affect a company's value.
+This is the FBLA project repository of Richard Xu, Andrew Xie, and Jonathan He. We competed in the Computer Game & Simulation Programming event, and we created a stock market game using the Java programming language and BlueJ IDE. The goal of the game is to help players become more acquainted with the trends of the stock market and how business and ethical decisions can affect a company's value.
 
 Source code is provided.
 
@@ -10,7 +10,7 @@ If you are familiar with running JAR files, you can skip to Step 2 and run it to
 
 Otherwise:
 1. Download the [BlueJ](https://www.bluej.org/) Java environment app
-2. Download the [JAR file](https://github.com/4dalols/Markethics/raw/refs/heads/main/Markethics%20JAR.jar) to a place you can find
+2. Download the [JAR file](https://github.com/RX7775/Markethics-Nationals/blob/main/Markethics%20Nationals.jar) to a place you can find
 3. In BlueJ, go to the top left and click Project -> Open ZIP/JAR... and select the jar file you just downloaded
 4. Right click the box named TitlePage -> Compile
 5. Right click TitlePage -> void main(String[] args)
