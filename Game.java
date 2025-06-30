@@ -448,8 +448,11 @@ public class Game {
             g.setFont(pm);
             g.setColor(Color.BLACK);
             
+            int panelWidth = getWidth();
+            int panelHeight = getHeight();
+            
             // Draw background
-            g.drawImage(bg, 0, 0, 1200, 625, this); 
+            g.drawImage(bg, 0, 0, panelWidth, panelHeight, this); 
             
             // Display game end information
             if (gameEnded) {
@@ -463,7 +466,7 @@ public class Game {
                     g.drawString("You lost everything... better luck next time!",200,200); 
                     // System.out.println("Num days: " + GameSettings.getNumDays());
                 }
-                g.drawString("Your stock peaked at a price of $"+String.format("%.2f",highScore),200,300); 
+                g.drawString("Your stock peaked at a price of $"+String.format("%.2f",highScore) + ".",200,300); 
                 if (day == 930) {
                     g.drawString("Final Business Efficiency: " + businessEfficiency,200,400); 
                     g.drawString("Final Ethical Points: " + ethicalPoints,200,350); 
@@ -474,11 +477,11 @@ public class Game {
             // Draw stock price graph
             if (stockPrice - previousStockPrice > 0) {
                 g.setColor(Color.GREEN);
-                g.drawString("Stock Price: $" + String.format("%.2f (+%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 50);
+                g.drawString("Stock Price: $" + String.format("%.2f (+%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 55);
             }
             else {
                 g.setColor(Color.RED);
-                g.drawString("Stock Price: $" + String.format("%.2f (%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 50);
+                g.drawString("Stock Price: $" + String.format("%.2f (%.2f)", stockPrice, stockPrice - previousStockPrice), 50, 55);
             }
             g.setColor(Color.BLACK);
             // if (day % 30 == 0) previousStockPrice = stockPrice;
@@ -497,7 +500,7 @@ public class Game {
             g.setColor(Color.BLACK); 
             pm = newFont("PermanentMarker-Regular", 20f);
             g.setFont(pm);
-            g.drawString("Highest Recorded Price: $" + String.format("%.2f", highScore), 400, 50);
+            g.drawString("Highest Recorded Price: $" + String.format("%.2f", highScore), 400, 70);
             Graphics2D g2 = (Graphics2D) g;
             g2.setStroke(new BasicStroke(10));
             
@@ -537,9 +540,11 @@ public class Game {
             // Draw sticky note
             if (day % 30 == 0) {
                 if (first) {
-                    stickyX = 800;
-                    stickyY = 350;
+                    stickyX = (int)(panelWidth * 0.67);
+                    stickyY = (int)(panelHeight * 0.5);
                 }
+                
+                // Need to set stickyXGlobal and stickyYGlobal?
                 g.drawImage(img, stickyX, stickyY, stickyWidth, stickyWidth, this);
                 g.setColor(Color.BLACK);
                 g.setFont(newFont("Caveat-VariableFont_wght", 24f));
@@ -570,7 +575,7 @@ public class Game {
             // Set dimensions
             int width = 300;
             int height = 150;
-            int marginRight = 30;
+            int marginRight = 50;
             int marginTop = 50;
             
             g.setColor(Color.WHITE); 
