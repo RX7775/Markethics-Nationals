@@ -133,28 +133,25 @@ public class TitlePage {
     private class GamePanel extends JPanel {
         // Image files
         private Image instructionsImage;
-        private Image otherImage;
+        private Image logoImage;
         private Image bg; 
     
         public GamePanel() {
             try {
                 // Image links 
-                URL instructionsUrl = new URL("https://i.imgur.com/4K4nHkT.png");
+                URL instructionsUrl = new URL("https://i.imgur.com/4K4nHkT.png"); // Instructions
                 instructionsImage = new ImageIcon(instructionsUrl).getImage();
                 
-                URL otherImageUrl = new URL("https://i.imgur.com/bBsxoVs.png");
-                otherImage = new ImageIcon(otherImageUrl).getImage();
+                URL logoUrl = new URL("https://i.imgur.com/bBsxoVs.png"); // Logo
+                logoImage = new ImageIcon(logoUrl).getImage();
                 
-                URL thirdUrl = new URL("https://i.imgur.com/CY2ydnP.png"); 
-                bg = new ImageIcon(thirdUrl).getImage(); 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            try {
-                URL imageUrl = new URL("https://i.imgur.com/v7VDzrC.png");
+                URL noteUrl = new URL("https://i.imgur.com/CY2ydnP.png"); // Sticky note
+                
+                URL imageUrl = new URL("https://i.imgur.com/v7VDzrC.png"); // Background
+                // bg = new ImageIcon(noteUrl).getImage();
                 bg = new ImageIcon(imageUrl).getImage();
             } catch (Exception e) {
-                System.out.println("Failed to load image"); 
+                System.out.println("Failed to load image.");
             }
         }
         
@@ -164,12 +161,22 @@ public class TitlePage {
             // Font
             g.setFont(new Font("Marker Felt", Font.BOLD, 20));
             g.setColor(Color.BLACK);
+            
+            int panelWidth = getWidth();
+            int panelHeight = getHeight();
+            // System.out.println("panelWidth: " + panelWidth);
+            // System.out.println("panelHeight: " + panelHeight);
             // Display images
             if (instructionsOn) {
-                if (instructionsImage != null) g.drawImage(instructionsImage, 0, 0, 1200, 630, this);
-            } else if (otherImage != null) {
-                g.drawImage(bg,0,0,1200,580,this); 
-                g.drawImage(otherImage, 300, 100, 600, 400, this); 
+                if (instructionsImage != null) g.drawImage(instructionsImage, 0, 0, panelWidth, panelHeight, this);
+            } else if (logoImage != null) {
+                g.drawImage(bg, 0, 0, panelWidth, panelHeight, this); 
+                // g.drawImage(logoImage, 300, 100, 600, 400, this);
+                int imageWidth = 600;
+                int imageHeight = 400;
+                int imageX = (panelWidth - imageWidth) / 2;
+                int imageY = (panelHeight - imageHeight) / 2;
+                g.drawImage(logoImage, imageX, imageY, imageWidth, imageHeight, this);
             } else {
                 g.drawString("Failed to load image", 600, 350);
             }
