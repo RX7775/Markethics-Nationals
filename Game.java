@@ -41,6 +41,8 @@ public class Game {
     private int recentBE = 0;
     private int recentEP = 0;
     private double tempStock = 0;
+    private int panelWidthGlobal = 0;
+    private int panelHeightGlobal = 0;
     
     public Game() {
         stockPrice = 100.0;  // Starting stock price
@@ -85,11 +87,15 @@ public class Game {
     }
     
     public void reset() {
+        int panelWidth = panelWidthGlobal;
+        int panelHeight = panelHeightGlobal;
         stockPrice = 100.0;  
         previousStockPrice = 100.0;
         highScore = 100.0; 
         businessEfficiency = 0; 
-        ethicalPoints = 0; 
+        ethicalPoints = 0;
+        stickyXGlobal = (int)(panelWidth * 0.67);
+        stickyYGlobal = (int)(panelHeight * 0.5);
         day = 1;           
         option1 = "YES";
         option2 = "NO";
@@ -252,8 +258,8 @@ public class Game {
                 recentEP*=-1;
                 recentBE*=-1;
             }
-            System.out.println(yesCount);
-            System.out.println(noCount);
+            // System.out.println(yesCount);
+            // System.out.println(noCount);
             first = true;
         }
         recentOption = currentEvent.toString()+", "+recentBE+" BE, "+recentEP+" EP";
@@ -296,7 +302,6 @@ public class Game {
     
     private void handleEnd(int option) {
         // Handles end of game
-        System.out.println("endclick"); 
         if (option == 1) {
             reset(); 
             gameTimer.start(); 
@@ -383,6 +388,8 @@ public class Game {
         private Image[] conImg = {img,bg};
 
         public GamePanel() {
+            panelWidthGlobal = getWidth();
+            panelHeightGlobal = getHeight();
             // Load necessary images
             try {
                 URL imageUrl = new URL("https://i.imgur.com/CY2ydnP.png");
